@@ -5,16 +5,30 @@
 function updateClock() {
     const now = new Date();
 
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const hours = String(
+        now.getHours()
+    ).padStart(2, "0");
 
-    document.getElementById("clock").textContent =
-        ${hours}:${minutes}:${seconds};
+    const minutes = String(
+        now.getMinutes()
+    ).padStart(2, "0");
+
+    const seconds = String(
+        now.getSeconds()
+    ).padStart(2, "0");
+
+    document.getElementById(
+        "clock"
+    ).textContent =
+    ${hours}:${minutes}:${seconds};
 }
 
 updateClock();
-setInterval(updateClock, 1000);
+
+setInterval(
+    updateClock,
+    1000
+);
 
 
 // =====================
@@ -22,24 +36,40 @@ setInterval(updateClock, 1000);
 // =====================
 
 const darkModeBtn =
-document.getElementById("darkModeBtn");
+document.getElementById(
+    "darkModeBtn"
+);
 
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
+if(
+    localStorage.getItem(
+        "theme"
+    ) === "dark"
+){
+    document.body.classList.add(
+        "dark"
+    );
 }
 
-darkModeBtn.addEventListener("click", () => {
+darkModeBtn.addEventListener(
+"click",
+()=>{
 
-    document.body.classList.toggle("dark");
+    document.body.classList.toggle(
+        "dark"
+    );
 
-    if (document.body.classList.contains("dark")) {
+    if(
+        document.body.classList.contains(
+            "dark"
+        )
+    ){
 
         localStorage.setItem(
             "theme",
             "dark"
         );
 
-    } else {
+    }else{
 
         localStorage.setItem(
             "theme",
@@ -56,24 +86,36 @@ darkModeBtn.addEventListener("click", () => {
 // =====================
 
 const profilePic =
-document.getElementById("profilePic");
+document.getElementById(
+    "profilePic"
+);
 
 const profileUpload =
-document.getElementById("profileUpload");
+document.getElementById(
+    "profileUpload"
+);
 
 const profileName =
-document.getElementById("profileName");
+document.getElementById(
+    "profileName"
+);
 
 const saveNameBtn =
-document.getElementById("saveNameBtn");
+document.getElementById(
+    "saveNameBtn"
+);
 
 const nameInput =
-document.getElementById("nameInput");
+document.getElementById(
+    "nameInput"
+);
 
 const savedName =
-localStorage.getItem("profileName");
+localStorage.getItem(
+    "profileName"
+);
 
-if (savedName) {
+if(savedName){
 
     profileName.textContent =
     savedName;
@@ -106,7 +148,7 @@ saveNameBtn.addEventListener(
 
 const savedPhoto =
 localStorage.getItem(
-"profilePhoto"
+    "profilePhoto"
 );
 
 if(savedPhoto){
@@ -141,31 +183,46 @@ function(e){
 
     };
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(
+        file
+    );
 
 });
+
 
 // =====================
 // LOGIN REGISTER
 // =====================
 
 const usernameInput =
-document.getElementById("usernameInput");
+document.getElementById(
+    "usernameInput"
+);
 
 const passwordInput =
-document.getElementById("passwordInput");
+document.getElementById(
+    "passwordInput"
+);
 
 const registerBtn =
-document.getElementById("registerBtn");
+document.getElementById(
+    "registerBtn"
+);
 
 const loginBtn =
-document.getElementById("loginBtn");
+document.getElementById(
+    "loginBtn"
+);
 
 const logoutBtn =
-document.getElementById("logoutBtn");
+document.getElementById(
+    "logoutBtn"
+);
 
 const loginStatus =
-document.getElementById("loginStatus");
+document.getElementById(
+    "loginStatus"
+);
 
 registerBtn.addEventListener(
 "click",
@@ -202,6 +259,10 @@ registerBtn.addEventListener(
     );
 
 });
+
+// =====================
+// LOGIN
+// =====================
 
 loginBtn.addEventListener(
 "click",
@@ -250,6 +311,11 @@ loginBtn.addEventListener(
 
 });
 
+
+// =====================
+// LOGOUT
+// =====================
+
 logoutBtn.addEventListener(
 "click",
 ()=>{
@@ -263,9 +329,15 @@ logoutBtn.addEventListener(
 
 });
 
+
+// =====================
+// AUTO LOGIN
+// =====================
+
 if(
-localStorage.getItem("loggedIn")
-=== "true"
+    localStorage.getItem(
+        "loggedIn"
+    ) === "true"
 ){
 
     const user =
@@ -289,19 +361,19 @@ localStorage.getItem("loggedIn")
 
 const fileUpload =
 document.getElementById(
-"fileUpload"
+    "fileUpload"
 );
 
 const fileList =
 document.getElementById(
-"fileList"
+    "fileList"
 );
 
 let uploadedFiles =
 JSON.parse(
-localStorage.getItem(
-"uploadedFiles"
-)
+    localStorage.getItem(
+        "uploadedFiles"
+    )
 ) || [];
 
 function renderFiles(){
@@ -323,7 +395,9 @@ function renderFiles(){
             </button>
         `;
 
-        fileList.appendChild(li);
+        fileList.appendChild(
+            li
+        );
 
     });
 
@@ -373,25 +447,26 @@ function(e){
 
 renderFiles();
 
+
 // =====================
 // GALERI FOTO
 // =====================
 
 const galleryUpload =
 document.getElementById(
-"galleryUpload"
+    "galleryUpload"
 );
 
 const gallery =
 document.getElementById(
-"gallery"
+    "gallery"
 );
 
 let galleryPhotos =
 JSON.parse(
-localStorage.getItem(
-"galleryPhotos"
-)
+    localStorage.getItem(
+        "galleryPhotos"
+    )
 ) || [];
 
 function renderGallery(){
@@ -416,7 +491,9 @@ function renderGallery(){
             </button>
         `;
 
-        gallery.appendChild(div);
+        gallery.appendChild(
+            div
+        );
 
     });
 
@@ -470,12 +547,13 @@ function(e){
 
     };
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(
+        file
+    );
 
 });
 
 renderGallery();
-
 
 // =====================
 // CATATAN
@@ -483,33 +561,33 @@ renderGallery();
 
 const noteInput =
 document.getElementById(
-"noteInput"
+    "noteInput"
 );
 
 const saveNoteBtn =
 document.getElementById(
-"saveNoteBtn"
+    "saveNoteBtn"
 );
 
 const noteList =
 document.getElementById(
-"noteList"
+    "noteList"
 );
 
 const searchNote =
 document.getElementById(
-"searchNote"
+    "searchNote"
 );
 
 let notes =
 JSON.parse(
-localStorage.getItem(
-"notes"
-)
+    localStorage.getItem(
+        "notes"
+    )
 ) || [];
 
 function renderNotes(
-keyword = ""
+    keyword = ""
 ){
 
     noteList.innerHTML = "";
@@ -536,7 +614,9 @@ keyword = ""
                 </button>
             `;
 
-            noteList.appendChild(li);
+            noteList.appendChild(
+                li
+            );
 
         }
 
@@ -554,7 +634,9 @@ saveNoteBtn.addEventListener(
     if(note === "")
         return;
 
-    notes.push(note);
+    notes.push(
+        note
+    );
 
     localStorage.setItem(
         "notes",
@@ -600,3 +682,105 @@ searchNote.addEventListener(
 });
 
 renderNotes();
+
+
+// =====================
+// KALENDER
+// =====================
+
+const calendarDate =
+document.getElementById(
+    "calendarDate"
+);
+
+const selectedDate =
+document.getElementById(
+    "selectedDate"
+);
+
+const savedDate =
+localStorage.getItem(
+    "selectedDate"
+);
+
+if(savedDate){
+
+    calendarDate.value =
+    savedDate;
+
+    selectedDate.textContent =
+    "Tanggal dipilih: " +
+    savedDate;
+
+}
+
+calendarDate.addEventListener(
+"change",
+()=>{
+
+    const value =
+    calendarDate.value;
+
+    localStorage.setItem(
+        "selectedDate",
+        value
+    );
+
+    selectedDate.textContent =
+    "Tanggal dipilih: " +
+    value;
+
+});
+
+
+// =====================
+// BACK TO TOP
+// =====================
+
+const backToTop =
+document.getElementById(
+    "backToTop"
+);
+
+window.addEventListener(
+"scroll",
+()=>{
+
+    if(
+        document.documentElement
+        .scrollTop > 200
+    ){
+
+        backToTop.style.display =
+        "block";
+
+    }else{
+
+        backToTop.style.display =
+        "none";
+
+    }
+
+});
+
+backToTop.addEventListener(
+"click",
+()=>{
+
+    window.scrollTo({
+
+        top: 0,
+        behavior: "smooth"
+
+    });
+
+});
+
+
+// =====================
+// SELESAI
+// =====================
+
+console.log(
+    "Portfolio Loaded Successfully"
+);
