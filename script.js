@@ -33,9 +33,19 @@ darkModeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 
     if (document.body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
     } else {
-        localStorage.setItem("theme", "light");
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
     }
 
 });
@@ -63,14 +73,22 @@ document.getElementById("nameInput");
 const savedName =
 localStorage.getItem("profileName");
 
-if(savedName){
-    profileName.textContent = savedName;
-    nameInput.value = savedName;
+if (savedName) {
+
+    profileName.textContent =
+    savedName;
+
+    nameInput.value =
+    savedName;
+
 }
 
-saveNameBtn.addEventListener("click",()=>{
+saveNameBtn.addEventListener(
+"click",
+()=>{
 
-    const name = nameInput.value.trim();
+    const name =
+    nameInput.value.trim();
 
     if(name !== ""){
 
@@ -79,31 +97,42 @@ saveNameBtn.addEventListener("click",()=>{
             name
         );
 
-        profileName.textContent = name;
+        profileName.textContent =
+        name;
+
     }
 
 });
 
 const savedPhoto =
-localStorage.getItem("profilePhoto");
+localStorage.getItem(
+"profilePhoto"
+);
 
 if(savedPhoto){
-    profilePic.src = savedPhoto;
+
+    profilePic.src =
+    savedPhoto;
+
 }
 
 profileUpload.addEventListener(
 "change",
 function(e){
 
-    const file = e.target.files[0];
+    const file =
+    e.target.files[0];
 
     if(!file) return;
 
-    const reader = new FileReader();
+    const reader =
+    new FileReader();
 
-    reader.onload = function(){
+    reader.onload =
+    function(){
 
-        profilePic.src = reader.result;
+        profilePic.src =
+        reader.result;
 
         localStorage.setItem(
             "profilePhoto",
@@ -115,7 +144,6 @@ function(e){
     reader.readAsDataURL(file);
 
 });
-
 
 // =====================
 // LOGIN REGISTER
@@ -139,7 +167,9 @@ document.getElementById("logoutBtn");
 const loginStatus =
 document.getElementById("loginStatus");
 
-registerBtn.addEventListener("click", () => {
+registerBtn.addEventListener(
+"click",
+()=>{
 
     const username =
     usernameInput.value.trim();
@@ -147,8 +177,13 @@ registerBtn.addEventListener("click", () => {
     const password =
     passwordInput.value.trim();
 
-    if(username === "" || password === ""){
-        alert("Isi username dan password");
+    if(
+        username === "" ||
+        password === ""
+    ){
+        alert(
+            "Isi username dan password"
+        );
         return;
     }
 
@@ -162,11 +197,15 @@ registerBtn.addEventListener("click", () => {
         password
     );
 
-    alert("Registrasi berhasil");
+    alert(
+        "Registrasi berhasil"
+    );
 
 });
 
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener(
+"click",
+()=>{
 
     const username =
     usernameInput.value.trim();
@@ -175,10 +214,14 @@ loginBtn.addEventListener("click", () => {
     passwordInput.value.trim();
 
     const savedUser =
-    localStorage.getItem("accountUsername");
+    localStorage.getItem(
+        "accountUsername"
+    );
 
     const savedPass =
-    localStorage.getItem("accountPassword");
+    localStorage.getItem(
+        "accountPassword"
+    );
 
     if(
         username === savedUser &&
@@ -191,35 +234,48 @@ loginBtn.addEventListener("click", () => {
         );
 
         loginStatus.textContent =
-        "Login sebagai: " + username;
+        "Login sebagai: " +
+        username;
 
         profileName.textContent =
         username;
 
     }else{
 
-        alert("Username atau password salah");
+        alert(
+            "Username atau password salah"
+        );
 
     }
 
 });
 
-logoutBtn.addEventListener("click", () => {
+logoutBtn.addEventListener(
+"click",
+()=>{
 
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem(
+        "loggedIn"
+    );
 
     loginStatus.textContent =
     "Belum Login";
 
 });
 
-if(localStorage.getItem("loggedIn") === "true"){
+if(
+localStorage.getItem("loggedIn")
+=== "true"
+){
 
     const user =
-    localStorage.getItem("accountUsername");
+    localStorage.getItem(
+        "accountUsername"
+    );
 
     loginStatus.textContent =
-    "Login sebagai: " + user;
+    "Login sebagai: " +
+    user;
 
     profileName.textContent =
     user;
@@ -232,14 +288,20 @@ if(localStorage.getItem("loggedIn") === "true"){
 // =====================
 
 const fileUpload =
-document.getElementById("fileUpload");
+document.getElementById(
+"fileUpload"
+);
 
 const fileList =
-document.getElementById("fileList");
+document.getElementById(
+"fileList"
+);
 
 let uploadedFiles =
 JSON.parse(
-localStorage.getItem("uploadedFiles")
+localStorage.getItem(
+"uploadedFiles"
+)
 ) || [];
 
 function renderFiles(){
@@ -250,7 +312,9 @@ function renderFiles(){
     (fileName,index)=>{
 
         const li =
-        document.createElement("li");
+        document.createElement(
+            "li"
+        );
 
         li.innerHTML = `
             ${fileName}
@@ -267,11 +331,16 @@ function renderFiles(){
 
 function deleteFile(index){
 
-    uploadedFiles.splice(index,1);
+    uploadedFiles.splice(
+        index,
+        1
+    );
 
     localStorage.setItem(
         "uploadedFiles",
-        JSON.stringify(uploadedFiles)
+        JSON.stringify(
+            uploadedFiles
+        )
     );
 
     renderFiles();
@@ -287,11 +356,15 @@ function(e){
 
     if(!file) return;
 
-    uploadedFiles.push(file.name);
+    uploadedFiles.push(
+        file.name
+    );
 
     localStorage.setItem(
         "uploadedFiles",
-        JSON.stringify(uploadedFiles)
+        JSON.stringify(
+            uploadedFiles
+        )
     );
 
     renderFiles();
@@ -300,20 +373,25 @@ function(e){
 
 renderFiles();
 
-
 // =====================
 // GALERI FOTO
 // =====================
 
 const galleryUpload =
-document.getElementById("galleryUpload");
+document.getElementById(
+"galleryUpload"
+);
 
 const gallery =
-document.getElementById("gallery");
+document.getElementById(
+"gallery"
+);
 
 let galleryPhotos =
 JSON.parse(
-localStorage.getItem("galleryPhotos")
+localStorage.getItem(
+"galleryPhotos"
+)
 ) || [];
 
 function renderGallery(){
@@ -324,7 +402,9 @@ function renderGallery(){
     (photo,index)=>{
 
         const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
         div.className =
         "gallery-item";
@@ -344,11 +424,16 @@ function renderGallery(){
 
 function deletePhoto(index){
 
-    galleryPhotos.splice(index,1);
+    galleryPhotos.splice(
+        index,
+        1
+    );
 
     localStorage.setItem(
         "galleryPhotos",
-        JSON.stringify(galleryPhotos)
+        JSON.stringify(
+            galleryPhotos
+        )
     );
 
     renderGallery();
@@ -376,7 +461,9 @@ function(e){
 
         localStorage.setItem(
             "galleryPhotos",
-            JSON.stringify(galleryPhotos)
+            JSON.stringify(
+                galleryPhotos
+            )
         );
 
         renderGallery();
@@ -388,3 +475,128 @@ function(e){
 });
 
 renderGallery();
+
+
+// =====================
+// CATATAN
+// =====================
+
+const noteInput =
+document.getElementById(
+"noteInput"
+);
+
+const saveNoteBtn =
+document.getElementById(
+"saveNoteBtn"
+);
+
+const noteList =
+document.getElementById(
+"noteList"
+);
+
+const searchNote =
+document.getElementById(
+"searchNote"
+);
+
+let notes =
+JSON.parse(
+localStorage.getItem(
+"notes"
+)
+) || [];
+
+function renderNotes(
+keyword = ""
+){
+
+    noteList.innerHTML = "";
+
+    notes.forEach(
+    (note,index)=>{
+
+        if(
+            note.toLowerCase()
+            .includes(
+                keyword.toLowerCase()
+            )
+        ){
+
+            const li =
+            document.createElement(
+                "li"
+            );
+
+            li.innerHTML = `
+                ${note}
+                <button onclick="deleteNote(${index})">
+                    Hapus
+                </button>
+            `;
+
+            noteList.appendChild(li);
+
+        }
+
+    });
+
+}
+
+saveNoteBtn.addEventListener(
+"click",
+()=>{
+
+    const note =
+    noteInput.value.trim();
+
+    if(note === "")
+        return;
+
+    notes.push(note);
+
+    localStorage.setItem(
+        "notes",
+        JSON.stringify(
+            notes
+        )
+    );
+
+    noteInput.value = "";
+
+    renderNotes();
+
+});
+
+function deleteNote(index){
+
+    notes.splice(
+        index,
+        1
+    );
+
+    localStorage.setItem(
+        "notes",
+        JSON.stringify(
+            notes
+        )
+    );
+
+    renderNotes(
+        searchNote.value
+    );
+
+}
+
+searchNote.addEventListener(
+"input",
+()=>{
+
+    renderNotes(
+        searchNote.value
+    );
+
+});
+
+renderNotes();
