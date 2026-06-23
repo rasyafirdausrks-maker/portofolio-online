@@ -299,3 +299,92 @@ function(e){
 });
 
 renderFiles();
+
+
+// =====================
+// GALERI FOTO
+// =====================
+
+const galleryUpload =
+document.getElementById("galleryUpload");
+
+const gallery =
+document.getElementById("gallery");
+
+let galleryPhotos =
+JSON.parse(
+localStorage.getItem("galleryPhotos")
+) || [];
+
+function renderGallery(){
+
+    gallery.innerHTML = "";
+
+    galleryPhotos.forEach(
+    (photo,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className =
+        "gallery-item";
+
+        div.innerHTML = `
+            <img src="${photo}">
+            <button onclick="deletePhoto(${index})">
+                ❌
+            </button>
+        `;
+
+        gallery.appendChild(div);
+
+    });
+
+}
+
+function deletePhoto(index){
+
+    galleryPhotos.splice(index,1);
+
+    localStorage.setItem(
+        "galleryPhotos",
+        JSON.stringify(galleryPhotos)
+    );
+
+    renderGallery();
+
+}
+
+galleryUpload.addEventListener(
+"change",
+function(e){
+
+    const file =
+    e.target.files[0];
+
+    if(!file) return;
+
+    const reader =
+    new FileReader();
+
+    reader.onload =
+    function(){
+
+        galleryPhotos.push(
+            reader.result
+        );
+
+        localStorage.setItem(
+            "galleryPhotos",
+            JSON.stringify(galleryPhotos)
+        );
+
+        renderGallery();
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+renderGallery();
