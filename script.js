@@ -1,4 +1,6 @@
+// =====================
 // JAM DIGITAL
+// =====================
 
 function updateClock() {
     const now = new Date();
@@ -15,7 +17,9 @@ updateClock();
 setInterval(updateClock, 1000);
 
 
+// =====================
 // DARK MODE
+// =====================
 
 const darkModeBtn =
 document.getElementById("darkModeBtn");
@@ -33,5 +37,93 @@ darkModeBtn.addEventListener("click", () => {
     } else {
         localStorage.setItem("theme", "light");
     }
+
+});
+
+
+// =====================
+// PROFIL PENGGUNA
+// =====================
+
+const profilePic =
+document.getElementById("profilePic");
+
+const profileUpload =
+document.getElementById("profileUpload");
+
+const profileName =
+document.getElementById("profileName");
+
+const saveNameBtn =
+document.getElementById("saveNameBtn");
+
+const nameInput =
+document.getElementById("nameInput");
+
+
+// LOAD NAMA
+
+const savedName =
+localStorage.getItem("profileName");
+
+if(savedName){
+    profileName.textContent = savedName;
+    nameInput.value = savedName;
+}
+
+
+// SIMPAN NAMA
+
+saveNameBtn.addEventListener("click",()=>{
+
+    const name = nameInput.value.trim();
+
+    if(name !== ""){
+
+        localStorage.setItem(
+            "profileName",
+            name
+        );
+
+        profileName.textContent = name;
+    }
+
+});
+
+
+// LOAD FOTO
+
+const savedPhoto =
+localStorage.getItem("profilePhoto");
+
+if(savedPhoto){
+    profilePic.src = savedPhoto;
+}
+
+
+// GANTI FOTO
+
+profileUpload.addEventListener(
+"change",
+function(e){
+
+    const file = e.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(){
+
+        profilePic.src = reader.result;
+
+        localStorage.setItem(
+            "profilePhoto",
+            reader.result
+        );
+
+    };
+
+    reader.readAsDataURL(file);
 
 });
