@@ -1,220 +1,126 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f5f5f5;
-    color: #222;
-    transition: 0.3s;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* HEADER */
+<div class="container">
 
-header {
-    text-align: center;
-    padding: 20px;
-    background: #333;
-    color: white;
-    border-radius: 10px;
-}
+    <h2>Dashboard</h2>
 
-main {
-    margin-top: 20px;
-}
+    <h3>Selamat Datang, Admin</h3>
 
-/* JAM DIGITAL */
+    <div id="clock"></div>
 
-.clock-container {
-    margin-top: 10px;
-}
+    <button onclick="toggleDarkMode()">
+        Dark Mode
+    </button>
 
-#clock {
-    font-size: 24px;
-    font-weight: bold;
-    background: white;
-    color: #333;
-    padding: 10px 20px;
-    border-radius: 8px;
-    display: inline-block;
-}
+    <hr>
 
-/* DARK MODE BUTTON */
+    <h3>Profil Saya</h3>
 
-#darkModeBtn {
-    margin-top: 15px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
+    <img id="profileImage"
+         src="https://via.placeholder.com/100"
+         width="100">
 
-/* PROFIL */
+    <br><br>
 
-.profile {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
+    <input type="file"
+           id="profileInput"
+           accept="image/*">
 
-.profile img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #555;
-}
+    <button onclick="changeProfile()">
+        Ganti Foto Profil
+    </button>
 
-.profile input {
-    padding: 10px;
-    margin-top: 10px;
-}
+    <p>Nama: Admin</p>
+    <p>Email: admin@gmail.com</p>
 
-.profile button {
-    padding: 10px 15px;
-    cursor: pointer;
-}
+    <hr>
 
-/* LOGIN REGISTER */
+    <h3>Upload File</h3>
 
-.auth {
-    text-align: center;
-    margin-bottom: 30px;
-}
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
 
-.auth input {
-    padding: 10px;
-    margin: 5px;
-}
+    <ul id="fileList"></ul>
 
-.auth button {
-    padding: 10px 15px;
-    margin: 5px;
-    cursor: pointer;
-}
+    <hr>
 
-#loginStatus {
-    font-weight: bold;
-}
+    <h3>Galeri Foto</h3>
 
-/* UPLOAD FILE */
+    <input type="file"
+           id="imageInput"
+           accept="image/*">
 
-.upload-section {
-    text-align: center;
-    margin-bottom: 30px;
-}
+    <button onclick="showImage()">
+        Tampilkan Foto
+    </button>
 
-.upload-section ul {
-    list-style: none;
-    padding: 0;
-}
+    <br><br>
 
-.upload-section li {
-    margin: 10px auto;
-    padding: 10px;
-    max-width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
+    <img id="previewImage" width="250">
 
-.upload-section button {
-    margin-left: 10px;
-    cursor: pointer;
-}
+    <hr>
 
-/* GALERI FOTO */
+    <h3>Cari Catatan</h3>
 
-.gallery-section {
-    text-align: center;
-    margin-bottom: 30px;
-}
+    <input type="text"
+           id="searchNote"
+           placeholder="Cari catatan..."
+           onkeyup="searchNote()">
 
-#gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
+    <hr>
 
-.gallery-item {
-    position: relative;
-}
+    <h3>Statistik Catatan</h3>
 
-.gallery-item img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #ccc;
-}
+    <p>Total Catatan:
+        <span id="jumlahCatatan">0</span>
+    </p>
 
-.gallery-item button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-}
+    <hr>
 
-/* KONTEN */
+    <h3>Catatan Saya</h3>
 
-section {
-    margin-bottom: 30px;
-}
+    <input type="text"
+           id="noteInput"
+           placeholder="Tulis catatan...">
 
-/* DARK MODE */
+    <button onclick="addNote()">
+        Tambah Catatan
+    </button>
 
-body.dark {
-    background: #121212;
-    color: white;
-}
+    <ul id="noteList"></ul>
 
-body.dark header {
-    background: #1e1e1e;
-}
+    <hr>
 
-body.dark #clock {
-    background: #333;
-    color: white;
-}
+    <h3>Kalender</h3>
 
-body.dark #darkModeBtn {
-    background: #444;
-    color: white;
-}
+    <input type="date">
 
-body.dark .profile img {
-    border-color: white;
-}
+    <hr>
 
-body.dark .upload-section li {
-    border-color: #555;
-}
+    <button onclick="topFunction()">
+        Kembali ke Atas
+    </button>
 
-body.dark .gallery-item img {
-    border-color: #555;
-}
+    <hr>
 
-/* RESPONSIVE */
+    <button onclick="logout()">
+        Logout
+    </button>
 
-@media (max-width: 768px) {
+</div>
 
-    .profile img {
-        width: 120px;
-        height: 120px;
-    }
+<footer>
+    <hr>
+    <p>© 2026 Website Dashboard - Dibuat oleh Saya</p>
+</footer>
 
-    #gallery {
-        gap: 10px;
-    }
+<script src="script.js"></script>
 
-    .gallery-item img {
-        width: 140px;
-        height: 140px;
-    }
-
-    .auth input,
-    .profile input {
-        width: 90%;
-        max-width: 300px;
-    }
-
-}
+</body>
+</html>
