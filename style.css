@@ -1,126 +1,310 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<div class="container">
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    padding: 20px;
+    transition: 0.3s;
+}
 
-    <h2>Dashboard</h2>
+/* HEADER */
 
-    <h3>Selamat Datang, Admin</h3>
+header {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-    <div id="clock"></div>
+.clock-container {
+    margin: 15px 0;
+}
 
-    <button onclick="toggleDarkMode()">
-        Dark Mode
-    </button>
+#clock {
+    background: white;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-    <hr>
+#darkModeBtn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
 
-    <h3>Profil Saya</h3>
+/* SECTION UMUM */
 
-    <img id="profileImage"
-         src="https://via.placeholder.com/100"
-         width="100">
+section {
+    margin-bottom: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-    <br><br>
+/* PROFIL */
 
-    <input type="file"
-           id="profileInput"
-           accept="image/*">
+.profile {
+    text-align: center;
+}
 
-    <button onclick="changeProfile()">
-        Ganti Foto Profil
-    </button>
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #555;
+}
 
-    <p>Nama: Admin</p>
-    <p>Email: admin@gmail.com</p>
+.profile input,
+.profile button {
+    margin-top: 10px;
+}
 
-    <hr>
+.profile input {
+    padding: 10px;
+}
 
-    <h3>Upload File</h3>
+.profile button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
 
-    <input type="file" id="fileInput">
-    <button onclick="uploadFile()">Upload</button>
+/* LOGIN */
 
-    <ul id="fileList"></ul>
+.auth {
+    text-align: center;
+}
 
-    <hr>
+.auth input {
+    padding: 10px;
+    margin: 5px;
+}
 
-    <h3>Galeri Foto</h3>
+.auth button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
 
-    <input type="file"
-           id="imageInput"
-           accept="image/*">
+#loginStatus {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-    <button onclick="showImage()">
-        Tampilkan Foto
-    </button>
+/* UPLOAD FILE */
 
-    <br><br>
+.upload-section {
+    text-align: center;
+}
 
-    <img id="previewImage" width="250">
+.upload-section ul {
+    list-style: none;
+    margin-top: 15px;
+}
 
-    <hr>
+.upload-section li {
+    margin: 10px auto;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+}
 
-    <h3>Cari Catatan</h3>
+.upload-section button {
+    margin-left: 10px;
+}
 
-    <input type="text"
-           id="searchNote"
-           placeholder="Cari catatan..."
-           onkeyup="searchNote()">
+/* GALERI FOTO */
 
-    <hr>
+.gallery-section {
+    text-align: center;
+}
 
-    <h3>Statistik Catatan</h3>
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-    <p>Total Catatan:
-        <span id="jumlahCatatan">0</span>
-    </p>
+.gallery-item {
+    position: relative;
+}
 
-    <hr>
+.gallery-item img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
 
-    <h3>Catatan Saya</h3>
+.gallery-item button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
 
-    <input type="text"
-           id="noteInput"
-           placeholder="Tulis catatan...">
+/* CATATAN */
 
-    <button onclick="addNote()">
-        Tambah Catatan
-    </button>
+.notes-section {
+    text-align: center;
+}
 
-    <ul id="noteList"></ul>
+#searchNote {
+    width: 90%;
+    max-width: 600px;
+    padding: 10px;
+}
 
-    <hr>
+#noteInput {
+    width: 90%;
+    max-width: 600px;
+    height: 120px;
+    padding: 10px;
+}
 
-    <h3>Kalender</h3>
+#saveNoteBtn {
+    padding: 10px 15px;
+    cursor: pointer;
+}
 
-    <input type="date">
+#noteList {
+    list-style: none;
+    margin-top: 20px;
+}
 
-    <hr>
+#noteList li {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: left;
+}
 
-    <button onclick="topFunction()">
-        Kembali ke Atas
-    </button>
+#noteList button {
+    float: right;
+}
 
-    <hr>
+/* KALENDER */
 
-    <button onclick="logout()">
-        Logout
-    </button>
+.calendar-section {
+    text-align: center;
+}
 
-</div>
+#calendarDate {
+    padding: 10px;
+    font-size: 16px;
+}
 
-<footer>
-    <hr>
-    <p>© 2026 Website Dashboard - Dibuat oleh Saya</p>
-</footer>
+#selectedDate {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-<script src="script.js"></script>
+/* BACK TO TOP */
 
-</body>
-</html>
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    display: none;
+}
+
+/* MAIN */
+
+main section {
+    text-align: center;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #121212;
+    color: white;
+}
+
+body.dark section {
+    background: #1e1e1e;
+}
+
+body.dark header {
+    background: #000;
+}
+
+body.dark #clock {
+    background: #333;
+    color: white;
+}
+
+body.dark #darkModeBtn {
+    background: #444;
+    color: white;
+}
+
+body.dark .profile img {
+    border-color: white;
+}
+
+body.dark .upload-section li,
+body.dark #noteList li {
+    border-color: #555;
+}
+
+body.dark .gallery-item img {
+    border-color: #555;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .profile img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .gallery-item img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .auth input,
+    .profile input,
+    #searchNote,
+    #noteInput {
+        width: 95%;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
