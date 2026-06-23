@@ -225,3 +225,77 @@ if(localStorage.getItem("loggedIn") === "true"){
     user;
 
 }
+
+
+// =====================
+// UPLOAD FILE
+// =====================
+
+const fileUpload =
+document.getElementById("fileUpload");
+
+const fileList =
+document.getElementById("fileList");
+
+let uploadedFiles =
+JSON.parse(
+localStorage.getItem("uploadedFiles")
+) || [];
+
+function renderFiles(){
+
+    fileList.innerHTML = "";
+
+    uploadedFiles.forEach(
+    (fileName,index)=>{
+
+        const li =
+        document.createElement("li");
+
+        li.innerHTML = `
+            ${fileName}
+            <button onclick="deleteFile(${index})">
+                Hapus
+            </button>
+        `;
+
+        fileList.appendChild(li);
+
+    });
+
+}
+
+function deleteFile(index){
+
+    uploadedFiles.splice(index,1);
+
+    localStorage.setItem(
+        "uploadedFiles",
+        JSON.stringify(uploadedFiles)
+    );
+
+    renderFiles();
+
+}
+
+fileUpload.addEventListener(
+"change",
+function(e){
+
+    const file =
+    e.target.files[0];
+
+    if(!file) return;
+
+    uploadedFiles.push(file.name);
+
+    localStorage.setItem(
+        "uploadedFiles",
+        JSON.stringify(uploadedFiles)
+    );
+
+    renderFiles();
+
+});
+
+renderFiles();
