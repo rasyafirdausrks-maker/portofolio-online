@@ -1,126 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Saya</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+    <header>
+        <h1>Portfolio Saya</h1>
 
-    <h2>Dashboard</h2>
+        <div class="clock-container">
+            <span id="clock">00:00:00</span>
+        </div>
 
-    <h3>Selamat Datang, Admin</h3>
+        <button id="darkModeBtn">🌙 Dark Mode</button>
+    </header>
 
-    <div id="clock"></div>
+    <!-- PROFIL -->
+    <section class="profile">
 
-    <button onclick="toggleDarkMode()">
-        Dark Mode
-    </button>
+        <img
+            id="profilePic"
+            src="https://via.placeholder.com/150"
+            alt="Foto Profil">
 
-    <hr>
+        <h2 id="profileName">Pengguna</h2>
 
-    <h3>Profil Saya</h3>
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Masukkan nama">
 
-    <img id="profileImage"
-         src="https://via.placeholder.com/100"
-         width="100">
+        <button id="saveNameBtn">
+            Simpan Nama
+        </button>
 
-    <br><br>
+        <br><br>
 
-    <input type="file"
-           id="profileInput"
-           accept="image/*">
+        <input
+            type="file"
+            id="profileUpload"
+            accept="image/*">
 
-    <button onclick="changeProfile()">
-        Ganti Foto Profil
-    </button>
+    </section>
 
-    <p>Nama: Admin</p>
-    <p>Email: admin@gmail.com</p>
+    <!-- LOGIN REGISTER -->
+    <section class="auth">
 
-    <hr>
+        <h2>Login / Register</h2>
 
-    <h3>Upload File</h3>
+        <input
+            type="text"
+            id="usernameInput"
+            placeholder="Username">
 
-    <input type="file" id="fileInput">
-    <button onclick="uploadFile()">Upload</button>
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Password">
 
-    <ul id="fileList"></ul>
+        <br><br>
 
-    <hr>
+        <button id="registerBtn">Register</button>
+        <button id="loginBtn">Login</button>
+        <button id="logoutBtn">Logout</button>
 
-    <h3>Galeri Foto</h3>
+        <p id="loginStatus">
+            Belum Login
+        </p>
 
-    <input type="file"
-           id="imageInput"
-           accept="image/*">
+    </section>
 
-    <button onclick="showImage()">
-        Tampilkan Foto
-    </button>
+    <!-- UPLOAD FILE -->
+    <section class="upload-section">
 
-    <br><br>
+        <h2>Upload File</h2>
 
-    <img id="previewImage" width="250">
+        <input
+            type="file"
+            id="fileUpload">
 
-    <hr>
+        <ul id="fileList"></ul>
 
-    <h3>Cari Catatan</h3>
+    </section>
 
-    <input type="text"
-           id="searchNote"
-           placeholder="Cari catatan..."
-           onkeyup="searchNote()">
+    <!-- GALERI FOTO -->
+    <section class="gallery-section">
 
-    <hr>
+        <h2>Galeri Foto</h2>
 
-    <h3>Statistik Catatan</h3>
+        <input
+            type="file"
+            id="galleryUpload"
+            accept="image/*">
 
-    <p>Total Catatan:
-        <span id="jumlahCatatan">0</span>
-    </p>
+        <div id="gallery"></div>
 
-    <hr>
+    </section>
 
-    <h3>Catatan Saya</h3>
+    <!-- CATATAN -->
+    <section class="notes-section">
 
-    <input type="text"
-           id="noteInput"
-           placeholder="Tulis catatan...">
+        <h2>Catatan</h2>
 
-    <button onclick="addNote()">
-        Tambah Catatan
-    </button>
+        <input
+            type="text"
+            id="searchNote"
+            placeholder="Cari catatan...">
 
-    <ul id="noteList"></ul>
+        <br><br>
 
-    <hr>
+        <textarea
+            id="noteInput"
+            placeholder="Tulis catatan..."></textarea>
 
-    <h3>Kalender</h3>
+        <br><br>
 
-    <input type="date">
+        <button id="saveNoteBtn">
+            Simpan Catatan
+        </button>
 
-    <hr>
+        <ul id="noteList"></ul>
 
-    <button onclick="topFunction()">
-        Kembali ke Atas
-    </button>
+    </section>
 
-    <hr>
+    <!-- KALENDER -->
+    <section class="calendar-section">
 
-    <button onclick="logout()">
-        Logout
-    </button>
+        <h2>Kalender</h2>
 
-</div>
+        <input
+            type="date"
+            id="calendarDate">
 
-<footer>
-    <hr>
-    <p>© 2026 Website Dashboard - Dibuat oleh Saya</p>
-</footer>
+        <p id="selectedDate">
+            Belum memilih tanggal
+        </p>
 
-<script src="script.js"></script>
+    </section>
+
+    <main>
+        <section>
+            <h2>Selamat Datang</h2>
+            <p>Ini adalah web portfolio saya.</p>
+        </section>
+    </main>
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop">↑</button>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
