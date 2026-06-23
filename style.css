@@ -85,6 +85,29 @@ main {
     font-weight: bold;
 }
 
+.upload-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.upload-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.upload-section li {
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.upload-section button {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 /* DARK MODE */
 
 body.dark {
