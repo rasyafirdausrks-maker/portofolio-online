@@ -1,124 +1,126 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Saya</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Portfolio Saya</h1>
+<div class="container">
 
-        <div class="clock-container">
-            <span id="clock">00:00:00</span>
-        </div>
+    <h2>Dashboard</h2>
 
-        <button id="darkModeBtn">🌙 Dark Mode</button>
-    </header>
+    <h3>Selamat Datang, Admin</h3>
 
-    <!-- PROFIL -->
-    <section class="profile">
+    <div id="clock"></div>
 
-        <img
-            id="profilePic"
-            src="https://via.placeholder.com/150"
-            alt="Foto Profil">
+    <button onclick="toggleDarkMode()">
+        Dark Mode
+    </button>
 
-        <h2 id="profileName">Pengguna</h2>
+    <hr>
 
-        <input
-            type="text"
-            id="nameInput"
-            placeholder="Masukkan nama">
+    <h3>Profil Saya</h3>
 
-        <button id="saveNameBtn">
-            Simpan Nama
-        </button>
+    <img id="profileImage"
+         src="https://via.placeholder.com/100"
+         width="100">
 
-        <br><br>
+    <br><br>
 
-        <input
-            type="file"
-            id="profileUpload"
-            accept="image/*">
+    <input type="file"
+           id="profileInput"
+           accept="image/*">
 
-    </section>
+    <button onclick="changeProfile()">
+        Ganti Foto Profil
+    </button>
 
-    <!-- LOGIN REGISTER -->
-    <section class="auth">
+    <p>Nama: Admin</p>
+    <p>Email: admin@gmail.com</p>
 
-        <h2>Login / Register</h2>
+    <hr>
 
-        <input
-            type="text"
-            id="usernameInput"
-            placeholder="Username">
+    <h3>Upload File</h3>
 
-        <input
-            type="password"
-            id="passwordInput"
-            placeholder="Password">
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
 
-        <br><br>
+    <ul id="fileList"></ul>
 
-        <button id="registerBtn">
-            Register
-        </button>
+    <hr>
 
-        <button id="loginBtn">
-            Login
-        </button>
+    <h3>Galeri Foto</h3>
 
-        <button id="logoutBtn">
-            Logout
-        </button>
+    <input type="file"
+           id="imageInput"
+           accept="image/*">
 
-        <p id="loginStatus">
-            Belum Login
-        </p>
+    <button onclick="showImage()">
+        Tampilkan Foto
+    </button>
 
-    </section>
+    <br><br>
 
-    <!-- UPLOAD FILE -->
-    <section class="upload-section">
+    <img id="previewImage" width="250">
 
-        <h2>Upload File</h2>
+    <hr>
 
-        <input
-            type="file"
-            id="fileUpload">
+    <h3>Cari Catatan</h3>
 
-        <ul id="fileList"></ul>
+    <input type="text"
+           id="searchNote"
+           placeholder="Cari catatan..."
+           onkeyup="searchNote()">
 
-    </section>
+    <hr>
 
-    <!-- GALERI FOTO -->
-    <section class="gallery-section">
+    <h3>Statistik Catatan</h3>
 
-        <h2>Galeri Foto</h2>
+    <p>Total Catatan:
+        <span id="jumlahCatatan">0</span>
+    </p>
 
-        <input
-            type="file"
-            id="galleryUpload"
-            accept="image/*">
+    <hr>
 
-        <div id="gallery"></div>
+    <h3>Catatan Saya</h3>
 
-    </section>
+    <input type="text"
+           id="noteInput"
+           placeholder="Tulis catatan...">
 
-    <!-- KONTEN -->
-    <main>
+    <button onclick="addNote()">
+        Tambah Catatan
+    </button>
 
-        <section>
-            <h2>Selamat Datang</h2>
-            <p>Ini adalah web portfolio saya.</p>
-        </section>
+    <ul id="noteList"></ul>
 
-    </main>
+    <hr>
 
-    <script src="script.js"></script>
+    <h3>Kalender</h3>
+
+    <input type="date">
+
+    <hr>
+
+    <button onclick="topFunction()">
+        Kembali ke Atas
+    </button>
+
+    <hr>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+<footer>
+    <hr>
+    <p>© 2026 Website Dashboard - Dibuat oleh Saya</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
