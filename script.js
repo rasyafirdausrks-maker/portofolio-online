@@ -60,9 +60,6 @@ document.getElementById("saveNameBtn");
 const nameInput =
 document.getElementById("nameInput");
 
-
-// LOAD NAMA
-
 const savedName =
 localStorage.getItem("profileName");
 
@@ -70,9 +67,6 @@ if(savedName){
     profileName.textContent = savedName;
     nameInput.value = savedName;
 }
-
-
-// SIMPAN NAMA
 
 saveNameBtn.addEventListener("click",()=>{
 
@@ -90,18 +84,12 @@ saveNameBtn.addEventListener("click",()=>{
 
 });
 
-
-// LOAD FOTO
-
 const savedPhoto =
 localStorage.getItem("profilePhoto");
 
 if(savedPhoto){
     profilePic.src = savedPhoto;
 }
-
-
-// GANTI FOTO
 
 profileUpload.addEventListener(
 "change",
@@ -127,3 +115,113 @@ function(e){
     reader.readAsDataURL(file);
 
 });
+
+
+// =====================
+// LOGIN REGISTER
+// =====================
+
+const usernameInput =
+document.getElementById("usernameInput");
+
+const passwordInput =
+document.getElementById("passwordInput");
+
+const registerBtn =
+document.getElementById("registerBtn");
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+const loginStatus =
+document.getElementById("loginStatus");
+
+registerBtn.addEventListener("click", () => {
+
+    const username =
+    usernameInput.value.trim();
+
+    const password =
+    passwordInput.value.trim();
+
+    if(username === "" || password === ""){
+        alert("Isi username dan password");
+        return;
+    }
+
+    localStorage.setItem(
+        "accountUsername",
+        username
+    );
+
+    localStorage.setItem(
+        "accountPassword",
+        password
+    );
+
+    alert("Registrasi berhasil");
+
+});
+
+loginBtn.addEventListener("click", () => {
+
+    const username =
+    usernameInput.value.trim();
+
+    const password =
+    passwordInput.value.trim();
+
+    const savedUser =
+    localStorage.getItem("accountUsername");
+
+    const savedPass =
+    localStorage.getItem("accountPassword");
+
+    if(
+        username === savedUser &&
+        password === savedPass
+    ){
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+        loginStatus.textContent =
+        "Login sebagai: " + username;
+
+        profileName.textContent =
+        username;
+
+    }else{
+
+        alert("Username atau password salah");
+
+    }
+
+});
+
+logoutBtn.addEventListener("click", () => {
+
+    localStorage.removeItem("loggedIn");
+
+    loginStatus.textContent =
+    "Belum Login";
+
+});
+
+if(localStorage.getItem("loggedIn") === "true"){
+
+    const user =
+    localStorage.getItem("accountUsername");
+
+    loginStatus.textContent =
+    "Login sebagai: " + user;
+
+    profileName.textContent =
+    user;
+
+}
