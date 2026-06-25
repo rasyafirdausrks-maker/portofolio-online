@@ -10,27 +10,26 @@
 
     <header>
         <h1>Portfolio Saya</h1>
-        <div class="clock-container">
-            <span id="clock">00:00:00</span>
-        </div>
+        <div class="clock-container"><span id="clock">00:00:00</span></div>
         <button id="darkModeBtn">🌙 Dark Mode</button>
     </header>
 
-    <section>
-        <h2>Auth</h2>
+    <section id="auth">
+        <h2>Login / Register</h2>
         <input type="text" id="usernameInput" placeholder="Username">
+        <input type="password" id="passwordInput" placeholder="Password">
         <button id="registerBtn">Register</button>
         <button id="loginBtn">Login</button>
         <p id="loginStatus">Belum Login</p>
     </section>
 
-    <section>
+    <section id="upload">
         <h2>Upload & Galeri</h2>
         <input type="file" id="fileUpload">
         <ul id="fileList"></ul>
     </section>
 
-    <section>
+    <section id="calendar">
         <h2>Kalender</h2>
         <input type="date" id="calendarDate">
         <p id="selectedDate">Belum memilih tanggal</p>
