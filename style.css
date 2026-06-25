@@ -308,3 +308,16 @@ body.dark .gallery-item img {
         padding: 15px;
     }
 }
+
+/* Styling default */
+body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styling saat dark mode aktif */
+body.dark-mode {
+    background-color: #333;
+    color: white;
+}
