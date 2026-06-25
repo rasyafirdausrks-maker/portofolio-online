@@ -784,3 +784,23 @@ backToTop.addEventListener(
 console.log(
     "Portfolio Loaded Successfully"
 );
+
+// --- FUNGSI JAM ---
+function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('id-ID', { hour12: false });
+    const clockElement = document.getElementById('clock');
+    
+    if (clockElement) {
+        clockElement.textContent = timeString;
+    }
+}
+// Jalankan setiap 1 detik
+setInterval(updateClock, 1000);
+updateClock(); // Jalankan sekali saat dimuat
+
+// --- FUNGSI DARK MODE ---
+const darkModeBtn = document.getElementById('darkModeBtn');
+darkModeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
