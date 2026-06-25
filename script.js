@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Jam & Dark Mode
+    // 1. JAM
     const clock = document.getElementById('clock');
     setInterval(() => clock.textContent = new Date().toLocaleTimeString('id-ID', { hour12: false }), 1000);
 
+    // 2. DARK MODE
     const btn = document.getElementById('darkModeBtn');
     if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
     btn.addEventListener('click', () => {
@@ -10,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // Login & Register
+    // 3. AUTH
     const uInput = document.getElementById('usernameInput');
     document.getElementById('registerBtn').addEventListener('click', () => {
         localStorage.setItem('user', uInput.value);
-        alert("Berhasil Daftar!");
+        alert("Terdaftar!");
     });
     document.getElementById('loginBtn').addEventListener('click', () => {
         if(uInput.value === localStorage.getItem('user')) {
@@ -22,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else alert("Username salah!");
     });
 
-    // Upload & Delete
+    // 4. UPLOAD
     document.getElementById('fileUpload').addEventListener('change', (e) => {
         const li = document.createElement('li');
-        li.innerHTML = ${e.target.files[0].name} <button class="del">Hapus</button>;
-        li.querySelector('.del').onclick = () => li.remove();
+        li.innerHTML = ${e.target.files[0].name} <button onclick="this.parentElement.remove()">Hapus</button>;
         document.getElementById('fileList').appendChild(li);
     });
 
-    // Kalender
+    // 5. KALENDER
     document.getElementById('calendarDate').addEventListener('change', (e) => {
         document.getElementById('selectedDate').textContent = "Tanggal: " + e.target.value;
     });
