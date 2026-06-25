@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Saya</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,26 +10,27 @@
 
     <header>
         <h1>Portfolio Saya</h1>
-        <div class="clock-container"><span id="clock">00:00:00</span></div>
+        <div class="clock-container">
+            <span id="clock">00:00:00</span>
+        </div>
         <button id="darkModeBtn">🌙 Dark Mode</button>
     </header>
 
-    <section id="auth">
-        <h2>Login / Register</h2>
+    <section>
+        <h2>Auth</h2>
         <input type="text" id="usernameInput" placeholder="Username">
-        <input type="password" id="passwordInput" placeholder="Password">
         <button id="registerBtn">Register</button>
         <button id="loginBtn">Login</button>
         <p id="loginStatus">Belum Login</p>
     </section>
 
-    <section id="upload-section">
+    <section>
         <h2>Upload & Galeri</h2>
         <input type="file" id="fileUpload">
         <ul id="fileList"></ul>
     </section>
 
-    <section id="calendar-section">
+    <section>
         <h2>Kalender</h2>
         <input type="date" id="calendarDate">
         <p id="selectedDate">Belum memilih tanggal</p>
