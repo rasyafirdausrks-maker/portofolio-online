@@ -1,59 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. JAM & DARK MODE ---
-    const clockElement = document.getElementById('clock');
-    const darkModeBtn = document.getElementById('darkModeBtn');
-    
-    function updateClock() {
-        if (clockElement) clockElement.textContent = new Date().toLocaleTimeString('id-ID', { hour12: false });
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    // 1. JAM
+    const clock = document.getElementById('clock');
+    setInterval(() => clock.textContent = new Date().toLocaleTimeString('id-ID', { hour12: false }), 1000);
 
+    // 2. DARK MODE
+    const btn = document.getElementById('darkModeBtn');
     if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
-    darkModeBtn?.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
         document.body.classList.toggle('dark');
         localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // --- 2. AUTH (LOGIN/REGISTER) ---
-    const registerBtn = document.getElementById('registerBtn');
-    const loginBtn = document.getElementById('loginBtn');
-    const loginStatus = document.getElementById('loginStatus');
-
-    registerBtn?.addEventListener('click', () => {
-        localStorage.setItem('user', document.getElementById('usernameInput').value);
-        alert("Registrasi Berhasil!");
+    // 3. LOGIN & REGISTER
+    const uInput = document.getElementById('usernameInput');
+    document.getElementById('registerBtn').addEventListener('click', () => {
+        localStorage.setItem('user', uInput.value);
+        alert("Terdaftar!");
     });
-
-    loginBtn?.addEventListener('click', () => {
-        const storedUser = localStorage.getItem('user');
-        if (document.getElementById('usernameInput').value === storedUser) {
-            loginStatus.textContent = "Login sebagai: " + storedUser;
+    document.getElementById('loginBtn').addEventListener('click', () => {
+        if(uInput.value === localStorage.getItem('user')) {
+            document.getElementById('loginStatus').textContent = "Login sebagai: " + uInput.value;
         } else {
-            alert("Username tidak terdaftar!");
+            alert("Username tidak ditemukan!");
         }
     });
 
-    // --- 3. UPLOAD & DELETE FILE ---
-    const fileUpload = document.getElementById('fileUpload');
+    // 4. UPLOAD & DELETE
+    const fileInput = document.getElementById('fileUpload');
     const fileList = document.getElementById('fileList');
-    
-    fileUpload?.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const li = document.createElement('li');
-            li.innerHTML = ${file.name} <button class="delBtn">Hapus</button>;
-            li.querySelector('.delBtn').onclick = () => li.remove();
-            fileList.appendChild(li);
-        }
+    fileInput.addEventListener('change', (e) => {
+        const li = document.createElement('li');
+        li.innerHTML = ${e.target.files[0].name} <button class="del">Hapus</button>;
+        li.querySelector('.del').onclick = () => li.remove();
+        fileList.appendChild(li);
     });
 
-    // --- 4. KALENDER ---
-    const calendarDate = document.getElementById('calendarDate');
-    const selectedDate = document.getElementById('selectedDate');
-    
-    calendarDate?.addEventListener('change', (e) => {
-        selectedDate.textContent = "Tanggal dipilih: " + e.target.value;
-        localStorage.setItem('date', e.target.value);
+    // 5. KALENDER
+    document.getElementById('calendarDate').addEventListener('change', (e) => {
+        document.getElementById('selectedDate').textContent = "Tanggal dipilih: " + e.target.value;
     });
 });
