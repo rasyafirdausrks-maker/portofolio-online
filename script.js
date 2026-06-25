@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. JAM
+    
+    // --- JAM DIGITAL ---
     const clockElement = document.getElementById('clock');
     function updateClock() {
         const now = new Date();
@@ -9,15 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // 2. DARK MODE
+    // --- DARK MODE ---
     const darkModeBtn = document.getElementById('darkModeBtn');
-    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
     
-    darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-    });
+    // Cek status tersimpan
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+    }
+    
+    if (darkModeBtn) {
+        darkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }
 
-    // ... (Masukkan kode fitur lainnya: Profil, Login, Upload, Galeri, Catatan di sini) ...
-    // Pastikan semua fungsi tersebut berada di dalam kurung kurawal ini
+    // --- (Masukkan fungsi lainnya: Profil, Login, dll di sini) ---
 });
